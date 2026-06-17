@@ -30,8 +30,11 @@ jobs:
       - name: Import Notebooks to Avance Folder
         env:
           DATABRICKS_HOST: "https://adb-7405619629697022.2.azuredatabricks.net"
+- name: Import Notebooks to Avance Folder
+        env:
+          DATABRICKS_HOST: "https://adb-7405619629697022.2.azuredatabricks.net"
           DATABRICKS_AUTH_TYPE: "azure-cli"
         run: |
-          echo "Importing Avance repository source to Databricks root..."
-          # This will copy everything in this repo over to the /Avance folder
-          databricks workspace import-dir . /Avance --overwrite
+          echo "Importing Avance repository source to Databricks..."
+          # Changing the source to ./src and adding a clear target folder name
+          databricks workspace import-dir ./src /Avance/pipeline-deploy --overwrite
